@@ -5,6 +5,7 @@ export async function getGoldPricePerGram(): Promise<number | null> {
     const json = await res.json();
     return parseFloat(json.pricePerGram);
   } catch (error: unknown) {
+    console.error(error)
     if (error instanceof Error) {
       throw new Error(`Failed to fetch gold price: ${error.message}`);
     }
@@ -21,6 +22,7 @@ export async function getLocalProduct(): Promise<Product[] | null> {
     const data = await res.json();
     return data;
   } catch (error: unknown) {
+    console.error(error)
     if (error instanceof Error) {
       throw new Error(`Failed to fetch products: ${error.message}`);
     }
