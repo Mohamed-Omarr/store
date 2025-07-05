@@ -27,7 +27,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const pricePerGram = pricePerOunce / 31.1035;
 
     return res.status(200).json({ pricePerGram: pricePerGram.toFixed(2)});
-  } catch (error) {
-    return res.status(500).json({ error: `Internal Server Error: ${error}` });
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return res.status(500).json({ error: `Internal Server Error: ${error.message}` });
+    }
+    return res.status(500).json({ error: "Internal Server Error: Unknown error" });
   }
 }
