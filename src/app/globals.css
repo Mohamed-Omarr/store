@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+
+/* styling the swiper */
+
+.swiper-scrollbar {
+  height: 10px !important; 
+  border-radius: 5px;
+  background: #0000001a; 
+  
+}
+
+.swiper-scrollbar-drag {
+  background: #999999; 
+  height: 100%;
+  border-radius: 5px;
+}
+
+
+.productSwiper {
+  --swiper-navigation-color: #000;       
+}
+
+
+.productSwiper .swiper-scrollbar {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.productSwiper:hover .swiper-scrollbar {
+  opacity: 1;
+  pointer-events: auto;
+}
